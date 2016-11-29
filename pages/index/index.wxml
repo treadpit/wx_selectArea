@@ -1,0 +1,27 @@
+
+<!--<view class="section__title">地区选择器</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">当前选择：{{array[index]}}</view>
+  </picker>-->
+asdfasfdasfdasdf
+<view class="shade">
+  <view class="selector-area box box-tb">
+    <view class="handle-bar box box-lr box-align-center">
+      <text class="cancel flex">取消</text>
+      <text class="confirm flex">确定</text>
+    </view>
+    <view class="area-selector flex box box-lr">
+      <scroll-view class="selector province flex" data-type="province" scroll-y="true">
+        <view wx:for="{{proviceData}}" bindtap="tapProvince" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedProvince == index ? 'actived' : ''}}">{{item.fullName}}</view>
+      </scroll-view>
+      <scroll-view class="selector city flex" data-type="city" scroll-y="true">
+        <view wx:for="{{cityData}}" bindtap="tapCity" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedCity == index ? 'actived' : ''}}">{{item.fullName}}</view>
+      </scroll-view>
+      <scroll-view class="selector district flex" data-type="district" scroll-y="true">
+        <view wx:for="{{districtData}}" bindtap="tapDistrict" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedDistrict == index ? 'actived' : ''}}">{{item.fullName}}</view>
+      </scroll-view>
+    </view>
+  </view>
