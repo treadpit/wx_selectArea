@@ -7,7 +7,26 @@ Page({
     districtData: [],
     selectedProvince: 0,
     selectedCity: 0,
-    selectedDistrict: 0
+    selectedDistrict: 0,
+    user: {
+      name: {
+        boy: "tom"
+      }
+    }
+  },
+  click(e) {
+    console.log(e.currentTarget.dataset.info.name);
+  },
+  addDot(arr) {
+    if(arr instanceof Array) {
+      arr.map(val => {
+        if(val.fullName.length > 4) {
+          val.fullName = val.fullName.slice(0, 4) + '...';
+          return val;
+        }
+      }) 
+      console.log(arr);
+    }
   },
   onLoad() {
     const self = this;
@@ -15,6 +34,7 @@ Page({
       url: 'http://japi.zto.cn/zto/api_utf8/baseArea?msg_type=GET_AREA&data=0',
       method: 'GET'
     }).then((province) => {
+      self.addDot(province.data.result);
       self.setData({
         proviceData: province.data.result
       });
@@ -25,6 +45,7 @@ Page({
         })
       );
     }).then((city) => {
+      self.addDot(city.data.result);
       self.setData({
         cityData: city.data.result
       });
@@ -35,6 +56,7 @@ Page({
         })
       );
     }).then((district) => {
+      self.addDot(district.data.result);
       self.setData({
         districtData: district.data.result
       });

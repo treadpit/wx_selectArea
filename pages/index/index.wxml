@@ -7,10 +7,11 @@ asdfasfdasfdasdf
 <view class="shade">
   <view class="selector-area box box-tb">
     <view class="handle-bar box box-lr box-align-center">
-      <text class="cancel flex">取消</text>
-      <text class="confirm flex">确定</text>
+      <text class="btn cancel flex">取消</text>
+      <text class="btn confirm flex">确定</text>
     </view>
-    <view class="area-selector flex box box-lr">
+    <view class="area-selector box box-lr">
+      <view class="white-shade"></view>
       <scroll-view class="selector province flex" data-type="province" scroll-y="true">
         <view wx:for="{{proviceData}}" bindtap="tapProvince" data-index="{{index}}" data-code="{{item.code}}" 
         class="picker {{selectedProvince == index ? 'actived' : ''}}">{{item.fullName}}</view>
