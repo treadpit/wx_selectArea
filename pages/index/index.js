@@ -28,7 +28,10 @@ Page({
     if(arr instanceof Array) {
       arr.map(val => {
         if(val.fullName.length > 4) {
-          val.fullName = val.fullName.slice(0, 4) + '...';
+          val.fullNameDot = val.fullName.slice(0, 4) + '...';
+          return val;
+        }else {
+          val.fullNameDot = val.fullName;
           return val;
         }
       }) 
@@ -58,7 +61,7 @@ Page({
       this.setData({
         cityData: city.data.result,
         'selectedCity.code': firstCity.code,
-        'selectedCity.fullName': firstCity.fullName,
+        'selectedCity.fullName': firstCity.fullName
       });
       return (
         Promise(wx.request, {
@@ -72,7 +75,7 @@ Page({
       this.setData({
         districtData: district.data.result,
         'selectedDistrict.code': firstDistrict.code,
-        'selectedDistrict.fullName': firstDistrict.fullName,
+        'selectedDistrict.fullName': firstDistrict.fullName
       });
     }).catch((e) => {
       console.log(e);
@@ -88,7 +91,9 @@ Page({
         this.setData({
             cityData: city.data.result,
             'selectedProvince.code': dataset.code,
-            'selectedProvince.fullName': dataset.fullName
+            'selectedProvince.fullName': dataset.fullName,
+            'selectedCity.code': city.data.result[0].code,
+            'selectedCity.fullName': city.data.result[0].fullName
         });
         return (
           Promise(wx.request, {
@@ -102,7 +107,9 @@ Page({
             districtData: district.data.result,
             'selectedProvince.index': e.currentTarget.dataset.index,
             'selectedCity.index': 0,
-            'selectedDistrict.index': 0
+            'selectedDistrict.index': 0,
+            'selectedDistrict.code': district.data.result[0].code,
+            'selectedDistrict.fullName': district.data.result[0].fullName
         });
     }).catch((e) => {
       console.log(e);
@@ -120,7 +127,9 @@ Page({
             'selectedCity.index': e.currentTarget.dataset.index,
             'selectedCity.code': dataset.code,
             'selectedCity.fullName': dataset.fullName,
-            'selectedDistrict.index': 0
+            'selectedDistrict.index': 0,
+            'selectedDistrict.code': district.data.result[0].code,
+            'selectedDistrict.fullName': district.data.result[0].fullName
         });
     }).catch((e) => {
         console.log(e);
@@ -135,9 +144,14 @@ Page({
       });
   },
   confirm(e) {
-    console.log(this.data);
     this.setData({
-      address: this.data.selectedProvince.fullName + this.data.selectedCity.fullName + this.data.selectedDistrict.fullName
+      address: this.data.selectedProvince.fullName + this.data.selectedCity.fullName + this.data.selectedDistrict.fullName,
+      isHidden: true
+    })
+  },
+  cancel() {
+    this.setData({
+      isHidden: true
     })
   }
 })
