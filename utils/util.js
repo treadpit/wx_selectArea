@@ -1,13 +1,13 @@
-import Promise from 'bluebird';
+import _Promise from 'bluebird';
 
 /**
  * @param {Function} fun 接口
  * @param {Object} options 接口参数
  * @returns {Promise} Promise对象
 */
-function _Promise (fun, options) {
+function Promise (fun, options) {
   options = options || {};
-  return new Promise((resolve, reject) => {
+  return new _Promise((resolve, reject) => {
     if (typeof fun !== 'function')
         reject();
     options.success = resolve;
@@ -17,5 +17,5 @@ function _Promise (fun, options) {
 }
 
 module.exports = {
-  Promise: _Promise
+  Promise: Promise
 }
