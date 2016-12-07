@@ -3,26 +3,26 @@
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="picker">当前选择：{{array[index]}}</view>
   </picker>-->
-asdfasfdasfdasdf
+<view>{{}}</view>
 <view class="shade">
   <view class="selector-area box box-tb">
     <view class="handle-bar box box-lr box-align-center">
       <text class="btn cancel flex">取消</text>
-      <text class="btn confirm flex">确定</text>
+      <text class="btn confirm flex" bindtap="confirm">确定</text>
     </view>
     <view class="area-selector box box-lr">
-      <view class="white-shade"></view>
+      <!--<view class="white-shade"></view>-->
       <scroll-view class="selector province flex" data-type="province" scroll-y="true">
-        <view wx:for="{{proviceData}}" bindtap="tapProvince" data-index="{{index}}" data-code="{{item.code}}" 
-        class="picker {{selectedProvince == index ? 'actived' : ''}}">{{item.fullName}}</view>
+        <view wx:for="{{proviceData}}" bindtap="tapProvince" data-code="{{item.fullname}}" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedProvince.index == index ? 'actived' : ''}}">{{item.fullName}}</view>
       </scroll-view>
       <scroll-view class="selector city flex" data-type="city" scroll-y="true">
-        <view wx:for="{{cityData}}" bindtap="tapCity" data-index="{{index}}" data-code="{{item.code}}" 
-        class="picker {{selectedCity == index ? 'actived' : ''}}">{{item.fullName}}</view>
+        <view wx:for="{{cityData}}" bindtap="tapCity" data-code="{{item.fullname}}" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedCity.index == index ? 'actived' : ''}}">{{item.fullName}}</view>
       </scroll-view>
       <scroll-view class="selector district flex" data-type="district" scroll-y="true">
-        <view wx:for="{{districtData}}" bindtap="tapDistrict" data-index="{{index}}" data-code="{{item.code}}" 
-        class="picker {{selectedDistrict == index ? 'actived' : ''}}">{{item.fullName}}</view>
+        <view wx:for="{{districtData}}" bindtap="tapDistrict" data-code="{{item.fullname}}" data-index="{{index}}" data-code="{{item.code}}" 
+        class="picker {{selectedDistrict.index == index ? 'actived' : ''}}">{{item.fullName}}</view>
       </scroll-view>
     </view>
   </view>
