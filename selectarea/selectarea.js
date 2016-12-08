@@ -72,22 +72,32 @@ const selectArea = {
       url: API + dataset.code,
       method: 'GET'
     }).then((city) => {
-        selectArea.addDot(city.data.result);
+      if(city.data.result) {
+          selectArea.addDot(city.data.result);
+          _this.setData({
+              cityData: city.data.result,
+              'selectedProvince.code': dataset.code,
+              'selectedProvince.fullName': dataset.fullName,
+              'selectedCity.code': city.data.result[0].code,
+              'selectedCity.fullName': city.data.result[0].fullName
+          });
+          return (
+            Promise(wx.request, {
+              url: API + city.data.result[0].code,
+              method: 'GET'
+            })
+          );
+      }else {
         _this.setData({
-            cityData: city.data.result,
+            cityData: [],
             'selectedProvince.code': dataset.code,
-            'selectedProvince.fullName': dataset.fullName,
-            'selectedCity.code': city.data.result[0].code,
-            'selectedCity.fullName': city.data.result[0].fullName
-        });
-        return (
-          Promise(wx.request, {
-            url: API + city.data.result[0].code,
-            method: 'GET'
-          })
-        );
+            'selectedProvince.fullName': dataset.fullName
+        })
+      }
+       
     }).then((district) => {
-        selectArea.addDot(district.data.result);
+      if(district.data.result) {
+         selectArea.addDot(district.data.result);
         _this.setData({
             districtData: district.data.result,
             'selectedProvince.index': e.currentTarget.dataset.index,
@@ -96,6 +106,13 @@ const selectArea = {
             'selectedDistrict.code': district.data.result[0].code,
             'selectedDistrict.fullName': district.data.result[0].fullName
         });
+      }else {
+          _this.setData({
+            districtData: [],
+            'selectedProvince.index': e.currentTarget.dataset.index
+        });
+      }
+      
     }).catch((error) => {
       console.log(error);
     })
@@ -106,16 +123,29 @@ const selectArea = {
       url: API + dataset.code,
       method: 'GET'
     }).then((district) => {
-       selectArea.addDot(district.data.result);
-       _this.setData({
-            districtData: district.data.result,
-            'selectedCity.index': e.currentTarget.dataset.index,
-            'selectedCity.code': dataset.code,
-            'selectedCity.fullName': dataset.fullName,
-            'selectedDistrict.index': 0,
-            'selectedDistrict.code': district.data.result[0].code,
-            'selectedDistrict.fullName': district.data.result[0].fullName
-        });
+      if(district.data.result) {
+        selectArea.addDot(district.data.result);
+        _this.setData({
+              districtData: district.data.result,
+              'selectedCity.index': e.currentTarget.dataset.index,
+              'selectedCity.code': dataset.code,
+              'selectedCity.fullName': dataset.fullName,
+              'selectedDistrict.index': 0,
+              'selectedDistrict.code': district.data.result[0].code,
+              'selectedDistrict.fullName': district.data.result[0].fullName
+          });
+      }else {
+         _this.setData({
+              districtData: [],
+              'selectedCity.index': e.currentTarget.dataset.index,
+              'selectedCity.code': dataset.code,
+              'selectedCity.fullName': dataset.fullName,
+              'selectedDistrict.index': 0,
+              'selectedDistrict.code': "",
+              'selectedDistrict.fullName': ""
+          });
+      }
+      
     }).catch((error) => {
         console.log(error);
     })
