@@ -58,6 +58,12 @@ Page(conf);
 >
 >API使用的是http的，故在预览时需开启 '开发环境不校验域名以及TLS版本'，可结合自身项目更改 `.selectarea.js` 文件中的API地址；
 
+
+### 项目截图
+
+<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
+
+
 ### 更新日志：
 ---
 ##### ＃20161208
