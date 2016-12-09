@@ -9,7 +9,7 @@
   height: 100%;
 }
 .show {
-  display: block;
+  display: block!important;
 }
 .handle-bar {
   padding: 0 15px;
@@ -24,6 +24,7 @@
   width: 100%;
   background-color: #e6ebf3;
   position: absolute;
+  display: none;
   bottom: 0;
 }
 .selector {
@@ -39,12 +40,4 @@
 }
 .area-selector {
   height: 520rpx;
-}
-.white-shade {
-  position: absolute;
-  width: 100%;
-  height: 60rpx;
-  background-color: #fff;
-  left: 0;
-  margin-top: 240rpx;
 }
