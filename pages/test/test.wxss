@@ -9,3 +9,10 @@ button {
     margin-top: 20px;
     text-align: center;
 }
+.gesture {
+    width: 90%;
+    text-indent: 20rpx;
+    margin: 0 auto;
+    padding: 20rpx 0;
+    border: 1px solid rgb(25, 167, 24);margin-bottom: 30rpx;
+}

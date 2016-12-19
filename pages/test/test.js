@@ -1,7 +1,9 @@
 import { SA } from '../../selectarea/selectarea';
+import { Gesture } from '../../utils/util';
 const conf = {
     data: {
-
+        items: ['开始滑动', '滑动吧', '好的', ' 滑起走'],
+        out: true
     },
     onLoad: function (options) {
         SA.load(this, {
@@ -9,7 +11,7 @@ const conf = {
         }); // 初始化区域框
     },
     choosearea() { // 页面弹框触发事件
-        SA.choosearea(this); 
+        SA.choosearea(this);
     },
     tapProvince(e) { // 点击省份
         SA.tapProvince(e, this);
@@ -25,6 +27,30 @@ const conf = {
     },
     confirm(e) { // 确认选择区域
         SA.confirm(e, this);
+    },
+    touchstart(e) {
+        /**
+         * 监听touch开始
+         */
+        Gesture.touchstart(e, this);
+    },
+    touchmove(e) {
+        // 是否为左滑事件
+        if (Gesture.isLeftSlide(e, this)) {
+            wx.showToast({
+                title: '左滑',
+                icon: 'success',
+                duration: 800
+            })
+        }
+        // 是否为右滑事件
+        if (Gesture.isRightSlide(e, this)) {
+            wx.showToast({
+                title: '右滑',
+                icon: 'success',
+                duration: 800
+            })
+        }
     }
 }
 
