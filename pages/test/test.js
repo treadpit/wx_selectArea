@@ -4,13 +4,12 @@ const conf = {
 
     },
     onLoad: function (options) {
-        SA.load(this); // 初始化区域框
+        SA.load(this, {
+            showDistrict: false // 省市区三级（true，默认值）／省市两级（false）
+        }); // 初始化区域框
     },
     choosearea() { // 页面弹框触发事件
         SA.choosearea(this); 
-    },
-    addDot() { // 字符串截取
-        SA.addDot(this);
     },
     tapProvince(e) { // 点击省份
         SA.tapProvince(e, this);

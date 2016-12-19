@@ -2,5 +2,6 @@
 
 <view class="txt">{{address||'您尚未选择送货地址哟'}}</view>
 
+<view class="code">{{selectedCode}}</view>
+
 <include src="../../selectarea/selectarea.wxml"/>
-<template is="selectArea" />

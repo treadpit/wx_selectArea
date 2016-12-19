@@ -5,3 +5,7 @@ button {
 .txt {
     text-align: center;
 }
+.code {
+    margin-top: 20px;
+    text-align: center;
+}

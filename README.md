@@ -25,13 +25,17 @@ import { SA } from '../../selectarea/selectarea';
 
 const conf = {
     onLoad: function (options) {
-        SA.load(this); // 初始化区域
+
+        // 若只需省市两级联动，加入配置项，默认为true(省市区三级联动)，可不传:
+
+        const conf = {
+            showDistrict: false // 省市两级
+        }
+        SA.load(this[, conf]); 
+
     },
     choosearea() { // 页面弹框触发事件
         SA.choosearea(this); 
-    },
-    addDot() { // 字符串截取
-        SA.addDot(this);
     },
     tapProvince(e) { // 点击省份
         SA.tapProvince(e, this);
@@ -51,6 +55,26 @@ const conf = {
 }
 
 Page(conf);
+
+// 页面data中包含的数据
+
+this.data = {
+    address: '',  // 确认时的最终完整地址
+    selectedCode: '',  // 确认时的最终选址编码
+    selectedProvince: {
+        code: 230000,   // 当前选择省份的编码
+        fullName: '黑龙江',    // 当前选中省份的全名
+        index: 3    // 当前索引
+    },
+    selectedCity: {
+        // 同省份
+        ......
+    },
+    selectedDistrict: {
+        // 同省份
+        ......
+    }
+}
 
 ```
 
