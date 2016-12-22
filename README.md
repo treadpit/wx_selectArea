@@ -1,8 +1,13 @@
 # wx_selectArea
 
-### 因小程序picker组件自身的限制，需自行模拟省市区三级联动
+### 小程序以更新 `picker-view` 组件，交互更加友好，已重写该选择器
 
 ---
+~~因小程序picker组件自身的限制，需自行模拟省市区三级联动~~
+
+
+### 以下为老版本使用方法：
+
 
 ### 使用方法
 
@@ -87,11 +92,20 @@ this.data = {
 
 ### 项目截图
 
+- 新版
+<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
+
+- 旧版
 <img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
 
 
 ### 更新日志：
 ---
+##### #20161222
+
+1. 1.A 新增picker-view版省市区三级
+2. 2.A utils工具增加简单的左右滑动手势判断
+
 ##### ＃20161219
 
 A 新增省市两级/省市区三级切换选项
