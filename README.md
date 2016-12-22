@@ -92,10 +92,12 @@ this.data = {
 
 ### 项目截图
 
-- 新版
+#### 新版
+
 <img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
 
-- 旧版
+#### 旧版
+
 <img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
 
 
