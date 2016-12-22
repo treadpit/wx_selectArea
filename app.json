@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/picker/picker",
     "pages/test/test"
   ],
   "window":{

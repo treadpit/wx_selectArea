@@ -1,8 +1,13 @@
 import { SA } from '../../selectarea/selectarea';
 import { Gesture } from '../../utils/util';
+const date = new Date()
+const years = []
+const months = []
+const days = []
+
 const conf = {
     data: {
-        items: ['开始滑动', '滑动吧', '好的', ' 滑起走'],
+        items: ['开始滑动'],
         out: true
     },
     onLoad: function (options) {

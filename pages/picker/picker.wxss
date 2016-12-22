@@ -1,0 +1,19 @@
+/* pages/picker/picker.wxss */
+.picker-view {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.addr-item {
+    line-height: 50px;
+    text-align: center;
+}
+
+.show {
+    text-align: center;
+    margin: 20px;
+    height: 50px;
+}
+.choose {
+    margin: 20px 0;
+}
