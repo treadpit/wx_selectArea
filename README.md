@@ -2,6 +2,17 @@
 
 ### 因小程序更新了 `picker-view` 组件，在做地址联动选择器时交互更加友好，故重写该选择器
 
+### 项目截图
+
+#### 新版
+
+<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
+
+#### 旧版
+
+<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
+
+
 ---
 ~~因小程序picker组件自身的限制，需自行模拟省市区三级联动~~
 
@@ -88,18 +99,6 @@ this.data = {
 > 使用示例参考 test 目录
 >
 >API使用的是http的，故在预览时需开启 '开发环境不校验域名以及TLS版本'，可结合自身项目更改 `.selectarea.js` 文件中的API地址；
-
-
-### 项目截图
-
-#### 新版
-
-<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
-
-#### 旧版
-
-<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
-
 
 ### 更新日志：
 ---
