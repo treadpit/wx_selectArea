@@ -1,0 +1,6 @@
+<view class="show">{{areaPicker.address}}</view>
+
+<button bindtap="getSelecedData" type="primary">获取已选择的城市信息</button>
+
+<import src="../../template/index.wxml"/>
+<template is="areaPicker" data="{{...areaPicker}}" />

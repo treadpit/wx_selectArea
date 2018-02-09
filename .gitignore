@@ -1,1 +1,2 @@
-.sencha/
+node_modules/
+dist/

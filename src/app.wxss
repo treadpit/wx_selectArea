@@ -1,0 +1,39 @@
+page {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+	display: flex;
+}
+
+.box-lr {
+	flex-direction: row;
+}
+
+.box-rl {
+	flex-direction: row-reverse;
+}
+
+.box-tb {
+	flex-direction: column;
+}
+
+.box-pack-center {
+	justify-content: center;
+}
+
+.box-align-center {
+	align-items: center;
+}
+
+.box-wrap {
+	flex-wrap: wrap;
+}
+
+.flex {
+	flex-grow: 1;
+}

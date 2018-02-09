@@ -1,0 +1,13 @@
+<template name="areaPicker">
+	<picker-view class="picker-view" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+		<picker-view-column>
+			<view wx:for="{{proviceData}}" wx:key="code" class="addr-item">{{item.fullNameDot}}</view>
+		</picker-view-column>
+		<picker-view-column>
+			<view wx:for="{{cityData}}" wx:key="code" class="addr-item">{{item.fullNameDot}}</view>
+		</picker-view-column>
+		<picker-view-column wx:if="{{showDistrict}}">
+			<view wx:for="{{districtData}}" wx:key="code" class="addr-item">{{item.fullNameDot}}</view>
+		</picker-view-column>
+	</picker-view>
+</template>

@@ -1,0 +1,32 @@
+{
+  "name": "wx_selectArea",
+  "version": "1.0.1",
+  "description": "one small selectArea demo",
+  "main": "app.js",
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-debug": "^3.2.0"
+  },
+  "scripts": {
+    "build": "rm -rf dist && gulp",
+		"dev": "gulp watch",
+		"fix": "eslint src --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treadpit/wx_selectArea.git"
+  },
+  "keywords": [
+    "wx-app"
+  ],
+  "author": "treadpit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/treadpit/wx_selectArea/issues"
+  },
+  "homepage": "https://github.com/treadpit/wx_selectArea#readme",
+  "dependencies": {
+    "eslint": "^3.19.0",
+    "stylelint": "^7.10.1"
+  }
+}
