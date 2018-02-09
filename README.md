@@ -32,7 +32,7 @@ Page({
 
 ### 截图
 
-<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/devtool_screenshot.png" width="1000px">
+<img src="https://raw.githubusercontent.com/treadpit/wx_selectArea/develop/screenshot/devtool_screenshot.png" width="1000px">
 
 <img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
 
