@@ -14,7 +14,7 @@
 // example.wxss
 @import '../../template/index.wxss';
 ```
-2. 日历组件初始化
+2. 组件初始化
 ```js
 // example.js
 
