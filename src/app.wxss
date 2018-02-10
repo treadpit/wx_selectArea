@@ -7,33 +7,33 @@ page {
 }
 
 .box {
-	display: flex;
+  display: flex;
 }
 
 .box-lr {
-	flex-direction: row;
+  flex-direction: row;
 }
 
 .box-rl {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .box-tb {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .box-pack-center {
-	justify-content: center;
+  justify-content: center;
 }
 
 .box-align-center {
-	align-items: center;
+  align-items: center;
 }
 
 .box-wrap {
-	flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .flex {
-	flex-grow: 1;
+  flex-grow: 1;
 }
