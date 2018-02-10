@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/treadpit/wx_selectArea.svg?branch=master)](https://travis-ci.org/treadpit/wx_selectArea)
+
 # wx_selectArea
 
 地址联动选择器采用微信小程序的 `picker-view` 组件
