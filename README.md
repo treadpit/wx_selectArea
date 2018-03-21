@@ -1,5 +1,7 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fb410b8b15b44a878ce67d5e4f893bea)](https://app.codacy.com/app/treadpit/wx_selectArea?utm_source=github.com&utm_medium=referral&utm_content=treadpit/wx_selectArea&utm_campaign=badger)
 [![Dependency status](https://img.shields.io/david/treadpit/wx_selectArea.svg)](https://david-dm.org/treadpit/wx_selectArea)
-[![Build Status](https://travis-ci.org/treadpit/wx_selectArea.svg?branch=develop)](https://travis-ci.org/treadpit/wx_selectArea)
+[![Build Status](https://travis-ci.org/treadpit/wx_selectArea.svg?branch=master)](https://travis-ci.org/treadpit/wx_selectArea)
+[![GitHub issues](https://img.shields.io/github/issues/treadpit/wx_selectArea.svg?style=flat-square)](https://github.com/treadpit/wx_selectArea/issues)
 
 # wx_selectArea
 
