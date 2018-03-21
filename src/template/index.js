@@ -17,15 +17,15 @@ const API = 'http://japi.zto.cn/zto/api_utf8/baseArea?msg_type=GET_AREA&data=';
 const conf = {
   addDot: function (arr) {
     if (arr instanceof Array) {
-      arr.map(val => {
+      const tmp = arr.slice();
+      tmp.map(val => {
         if (val.fullName.length > 4) {
           val.fullNameDot = val.fullName.slice(0, 4) + '...';
-          return val;
         } else {
           val.fullNameDot = val.fullName;
-          return val;
         }
       });
+      return tmp;
     }
   },
   /**
@@ -48,13 +48,13 @@ const conf = {
       }).then((city) => {
         const cityData = city.data.result;
         if (cityData && cityData.length) {
-          conf.addDot(city.data.result);
+          const dataWithDot = conf.addDot(city.data.result);
           this.setData({
-            'areaPicker.cityData': city.data.result
+            'areaPicker.cityData': dataWithDot
           });
           return (
             fetch({
-              url: API + city.data.result[0].code,
+              url: API + dataWithDot[0].code,
               method: 'GET'
             })
           );
@@ -70,12 +70,12 @@ const conf = {
         const districtData = district.data.result;
         const { cityData } = this.data.areaPicker;
         if (districtData && districtData.length > 0) {
-          conf.addDot(districtData);
+          const dataWithDot = conf.addDot(districtData);
           this.setData({
-            'areaPicker.districtData': districtData,
+            'areaPicker.districtData': dataWithDot,
             'areaPicker.value': [ currentValue[0], 0, 0 ],
-            'areaPicker.address': provinceData[currentValue[0]].fullName + ' - ' + cityData[0].fullName + (hideDistrict ? '' : ' - ' + districtData[0].fullName),
-            'areaPicker.selected': hideDistrict ? [provinceData[currentValue[0]], cityData[0]] : [provinceData[currentValue[0]], cityData[0], districtData[0]]
+            'areaPicker.address': provinceData[currentValue[0]].fullName + ' - ' + cityData[0].fullName + (hideDistrict ? '' : ' - ' + dataWithDot[0].fullName),
+            'areaPicker.selected': hideDistrict ? [provinceData[currentValue[0]], cityData[0]] : [provinceData[currentValue[0]], cityData[0], dataWithDot[0]]
           });
         } else {
           this.setData({
@@ -98,12 +98,12 @@ const conf = {
         if (!district) return;
         const districtData = district.data.result;
         if (districtData && districtData.length > 0) {
-          conf.addDot(districtData);
+          const dataWithDot = conf.addDot(districtData);
           this.setData({
-            'areaPicker.districtData': districtData,
+            'areaPicker.districtData': dataWithDot,
             'areaPicker.value': [ currentValue[0], currentValue[1], 0 ],
-            'areaPicker.address': provinceData[currentValue[0]].fullName + ' - ' + cityData[currentValue[1]].fullName + (hideDistrict ? '' : ' - ' + districtData[0].fullName),
-            'areaPicker.selected': hideDistrict ? [provinceData[currentValue[0]], cityData[currentValue[1]]] : [provinceData[currentValue[0]], cityData[currentValue[1]], districtData[0]]
+            'areaPicker.address': provinceData[currentValue[0]].fullName + ' - ' + cityData[currentValue[1]].fullName + (hideDistrict ? '' : ' - ' + dataWithDot[0].fullName),
+            'areaPicker.selected': hideDistrict ? [provinceData[currentValue[0]], cityData[currentValue[1]]] : [provinceData[currentValue[0]], cityData[currentValue[1]], dataWithDot[0]]
           });
         } else {
           this.setData({
@@ -152,12 +152,12 @@ export default (config = {}) => {
     method: 'GET'
   }).then((province) => {
     const firstProvince = province.data.result[0];
-    conf.addDot(province.data.result);
+    const dataWithDot = conf.addDot(province.data.result);
     /**
 		 * 默认选择获取的省份第一个省份数据
 		 */
     self.setData({
-      'areaPicker.provinceData': province.data.result,
+      'areaPicker.provinceData': dataWithDot,
       'areaPicker.selectedProvince.index': 0,
       'areaPicker.selectedProvince.code': firstProvince.code,
       'areaPicker.selectedProvince.fullName': firstProvince.fullName,
@@ -170,9 +170,9 @@ export default (config = {}) => {
     );
   }).then((city) => {
     const firstCity = city.data.result[0];
-    conf.addDot(city.data.result);
+    const dataWithDot = conf.addDot(city.data.result);
     self.setData({
-      'areaPicker.cityData': city.data.result,
+      'areaPicker.cityData': dataWithDot,
       'areaPicker.selectedCity.index': 0,
       'areaPicker.selectedCity.code': firstCity.code,
       'areaPicker.selectedCity.fullName': firstCity.fullName,
@@ -188,22 +188,26 @@ export default (config = {}) => {
         })
       );
     } else {
+      const { provinceData, cityData } = self.data.areaPicker;
       self.setData({
         'areaPicker.value': [0, 0],
-        'areaPicker.address': self.data.areaPicker.provinceData[0].fullName + ' - ' + self.data.areaPicker.cityData[0].fullName
+        'areaPicker.address': provinceData[0].fullName + ' - ' + cityData[0].fullName,
+        'areaPicker.selected': [provinceData[0], cityData[0]]
       });
     }
   }).then((district) => {
     if (!district) return;
     const firstDistrict = district.data.result[0];
-    conf.addDot(district.data.result);
+    const dataWithDot = conf.addDot(district.data.result);
+    const { provinceData, cityData } = self.data.areaPicker;
     self.setData({
       'areaPicker.value': [0, 0, 0],
-      'areaPicker.districtData': district.data.result,
+      'areaPicker.districtData': dataWithDot,
       'areaPicker.selectedDistrict.index': 0,
       'areaPicker.selectedDistrict.code': firstDistrict.code,
       'areaPicker.selectedDistrict.fullName': firstDistrict.fullName,
-      'areaPicker.address': self.data.areaPicker.provinceData[0].fullName + ' - ' + self.data.areaPicker.cityData[0].fullName + ' - ' + district.data.result[0].fullName
+      'areaPicker.address': provinceData[0].fullName + ' - ' + cityData[0].fullName + ' - ' + firstDistrict.fullName,
+      'areaPicker.selected': [provinceData[0], cityData[0], firstDistrict]
     });
   }).catch((e) => {
     console.error(e);
