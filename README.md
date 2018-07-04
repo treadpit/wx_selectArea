@@ -8,7 +8,7 @@
 
 提供 `template` [模板引入](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/template.html)
 
-1. 引入`wxml`及`wxss`
+#### 1. 引入`wxml`及`wxss`
 ```xml
 // example.wxml
 <import src="../../template/index.wxml"/>
@@ -17,22 +17,50 @@
 // example.wxss
 @import '../../template/index.wxss';
 ```
-2. 组件初始化
-```js
-// example.js
+#### 2. 组件初始化
 
+```js
 import initAreaPicker, { getSelectedAreaData } from '../../template/index';
-Page({
+
+const conf = {
+	onShow: () => {
+    initAreaPicker();
+  },
+};
+
+Page(conf);
+```
+
+##### 2.1 自定义配置
+
+> 目前仅支持是否隐藏第三极选择栏，默认显示
+
+```js
+import initAreaPicker from '../../template/index';
+
+const conf = {
 	onShow: () => {
     initAreaPicker({
-      // hideDistrict: true, // 是否隐藏区县选择栏，默认显示
+      hideDistrict: true,
     });
   },
-	getSelecedData() {
-		console.table(getSelectedAreaData()); // 提供`getSelectedAreaData`方法，返回当前选择的省市区信息组成的数组
-	}
-});
+};
 
+Page(conf);
+```
+
+##### 2.2 获取当前选择的省市区信息
+
+```js
+import { getSelectedAreaData } from '../../template/index';
+
+const conf = {
+	btnClick() {
+		console.table(getSelectedAreaData()); 
+	},
+};
+
+Page(conf);
 ```
 
 ### 截图
@@ -43,7 +71,7 @@ Page({
 
 #### 旧版
 
-> 小程序不支持 `picker-view` 组件时，用 `scroll-view` 模拟的联动选择器（不再维护）
+> 小程序前期不支持 `picker-view` 组件时，用 `scroll-view` 模拟的联动选择器
 
 <img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
 
