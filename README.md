@@ -62,17 +62,39 @@ const conf = {
 
 Page(conf);
 ```
+### 其他
+
+`API` 请求地址在 `config` 文件夹中配置，`GET` 请求接口类似 `https://your.com/api/area?code=123`，服务端返回数据可参考例子中格式即可直接套用模板。
+
+```js
+
+// request
+
+http('https://your.com/api/area?code=0');
+
+// response
+{
+    "message": "",
+    "result": [
+        {
+            "code": 340000,
+            "fullName": "安徽省",
+            "mark": "",
+            "outofrange": 0,
+            "printMark": ""
+        },
+        {
+            "code": 820000,
+            "fullName": "澳门特别行政区",
+            "mark": "",
+            "outofrange": 0,
+            "printMark": ""
+        },
+        ....
+    ]
+}
+```
 
 ### 截图
 
 <img src="https://raw.githubusercontent.com/treadpit/wx_selectArea/develop/screenshot/devtool_screenshot.png" width="1000px">
-
-<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/182245dl7zwrbc5rl2g7ls.gif" width="380px">
-
-#### 旧版
-
-> 小程序前期不支持 `picker-view` 组件时，用 `scroll-view` 模拟的联动选择器
-
-<img src="https://github.com/treadpit/wx_selectArea/blob/master/screenshot/154906d8z81rtbrh4t4ith.gif" width="380px">
-
-欢迎反馈...
