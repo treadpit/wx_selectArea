@@ -1,3 +1,5 @@
+import { apiUrl } from '../config/index';
+
 const defaultOptions = {
   method: 'GET'
 };
@@ -16,8 +18,6 @@ function fetch(url) {
     wx.request({...defaultOptions, ...options});
   });
 }
-
-const API = 'http://japi.zto.cn/zto/api_utf8/baseArea?msg_type=GET_AREA&data=';
 
 const conf = {
   addDot: function(arr) {
@@ -50,14 +50,14 @@ const conf = {
     const districtCondition = hideDistrict ? false : value[ 0 ] === cv0 && value[ 1 ] === cv1 && value[ 2 ] !== cv2;
     if (provinceCondition) {
       // 滑动省份
-      fetch(API + provinceData[ cv0 ].code).then((city) => {
+      fetch(apiUrl + provinceData[ cv0 ].code).then((city) => {
         const cityData = city.data.result;
         if (cityData && cityData.length) {
           const dataWithDot = conf.addDot(city.data.result);
           this.setData({
             'areaPicker.cityData': dataWithDot
           });
-          return fetch(API + dataWithDot[ 0 ].code);
+          return fetch(apiUrl + dataWithDot[ 0 ].code);
         } else {
           this.setData({
             'areaPicker.cityData': [],
@@ -91,7 +91,7 @@ const conf = {
     } else if (cityCondition) {
       const { provinceData, cityData } = this.data.areaPicker;
       // 滑动城市
-      fetch(API + cityData[ cv1 ].code).then((district) => {
+      fetch(apiUrl + cityData[ cv1 ].code).then((district) => {
         if (!district) return;
         const districtData = district.data.result;
         if (districtData && districtData.length > 0) {
@@ -144,7 +144,7 @@ export default (config = {}) => {
   self.config = config;
   self.bindChange = conf.bindChange.bind(self);
 
-  fetch(API + '0').then((province) => {
+  fetch(apiUrl + '0').then((province) => {
     const firstProvince = province.data.result[ 0 ];
     const dataWithDot = conf.addDot(province.data.result);
     /**
@@ -156,7 +156,7 @@ export default (config = {}) => {
       'areaPicker.selectedProvince.code': firstProvince.code,
       'areaPicker.selectedProvince.fullName': firstProvince.fullName,
     });
-    return fetch(API + firstProvince.code);
+    return fetch(apiUrl + firstProvince.code);
   }).then((city) => {
     const firstCity = city.data.result[ 0 ];
     const dataWithDot = conf.addDot(city.data.result);
@@ -170,7 +170,7 @@ export default (config = {}) => {
 		 * 省市二级则不请求区域
 		 */
     if (!config.hideDistrict) {
-      return fetch(API + firstCity.code);
+      return fetch(apiUrl + firstCity.code);
     } else {
       const { provinceData, cityData } = self.data.areaPicker;
       self.setData({

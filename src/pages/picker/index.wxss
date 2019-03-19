@@ -6,4 +6,10 @@ page {
   align-items: center;
   padding-top: 100rpx;
   overflow: hidden;
+  color: #333;
+  font-size: 28rpx;
+}
+
+button {
+  font-size: 28rpx;
 }
